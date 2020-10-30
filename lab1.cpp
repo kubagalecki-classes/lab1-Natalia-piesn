@@ -4,17 +4,23 @@ using namespace std;
 
 struct Wektor2D
 {
+    Wektor2D(double a, double b)
+    {
+        x = a;
+        y = b;
+        cout << a << "," << b << " created\n";
+    }
+    ~Wektor2D() { cout << x << "," << y << " deleted\n"; }
+
     double x;
     double y;
-    void   norm() { cout << sqrt(x * x + y * y) << "\n"; }
-    void   print() { cout << "(" << x << "," << y << ") \n"; }
+    // void   norm() { cout << sqrt(x * x + y * y) << "\n"; }
+    // void   print() { cout << "(" << x << "," << y << ") \n"; }
 };
 
 int main()
 {
-    Wektor2D vector1;
-    vector1.x = 3.5;
-    vector1.y = 5.5;
-    vector1.norm();
-    vector1.print();
+    Wektor2D vector1{3.5, 2.5};
+    Wektor2D vector2{-2, 0.4};
+    Wektor2D vector3{-5, 0};
 }
