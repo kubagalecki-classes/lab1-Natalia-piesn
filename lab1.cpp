@@ -2,26 +2,29 @@
 #include <iostream>
 using namespace std;
 
-struct Wektor2D
+class Wektor2D
 {
 public:
-    void   setX(double a) { x = a; }
-    double getX() { return x; }
-
-    void   setY(double a) { y = a; }
-    double getY() { return y; }
-
-private:
     double x;
     double y;
+    void   print() { cout << x << " " << y << endl; }
+
+private:
+    friend Wektor2D operator+(const Wektor2D& v1, const Wektor2D& v2);
 };
+
+Wektor2D operator+(const Wektor2D& v1, const Wektor2D& v2)
+{
+    Wektor2D v = v1;
+    v.x        = v2.x + v1.x;
+    v.y        = v2.y + v1.y;
+
+    return v;
+}
 
 int main()
 {
-    Wektor2D vec1;
-    vec1.setX(3.5);
-    vec1.setY(4.5);
-
-    cout << vec1.getX() << " " << vec1.getY() << "\n";
-    // not posiible to run, as x is private: cout << vec1.x;
+    Wektor2D vec1{3.0, 4.6}, vec2{1.3, 2.8};
+    Wektor2D v = vec1 + vec2;
+    v.print();
 }
