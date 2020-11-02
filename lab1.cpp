@@ -13,6 +13,7 @@ public:
     }
     double x;
     double y;
+    double ilo;
     void   print() { cout << x << " " << y << endl; }
 
 private:
@@ -31,15 +32,17 @@ Wektor2D operator+(const Wektor2D& v1, const Wektor2D& v2)
 
 Wektor2D operator*(const Wektor2D& v2, const Wektor2D& v1)
 {
-    return (v2.x * v1.x + v2.y * v1.y);
+    Wektor2D B;
+    B.ilo = v2.x * v1.x + v2.y * v1.y;
+    return B;
 }
 
 int main()
 {
-    Wektor2D vec1(3.0, 4.6), vec2(1.3, 2.8);
+    Wektor2D vec1(3.0, 4.0), vec2(1.0, 2.0);
     Wektor2D v = vec1 + vec2;
     v.print();
-    Wektor2D ilo;
-    ilo = vec1 * vec2;
-    ilo.print();
+    Wektor2D v1;
+    v1 = vec1 * vec2;
+    cout << v1.ilo << endl;
 }
