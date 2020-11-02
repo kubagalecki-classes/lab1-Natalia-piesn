@@ -2,6 +2,12 @@
 #include <iostream>
 using namespace std;
 
+struct Informer
+{
+    Informer() { cout << "Constructed! \n"; }
+    ~Informer() { cout << "Deconstructed! \n"; }
+};
+
 struct Wektor2D
 {
     Wektor2D(double a, double b)
@@ -11,6 +17,8 @@ struct Wektor2D
         cout << a << "," << b << " created\n";
     }
     ~Wektor2D() { cout << x << "," << y << " deleted\n"; }
+
+    Informer A;
 
     double x;
     double y;
@@ -22,5 +30,5 @@ int main()
 {
     Wektor2D vector1{3.5, 2.5};
     Wektor2D vector2{-2, 0.4};
-    Wektor2D vector3{-5, 0};
+    //  Wektor2D vector3{-5, 0};
 }
