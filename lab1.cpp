@@ -17,8 +17,9 @@ public:
     void   print() { cout << x << " " << y << endl; }
 
 private:
-    friend Wektor2D operator+(const Wektor2D& v1, const Wektor2D& v2);
-    friend Wektor2D operator*(const Wektor2D& v1);
+    friend Wektor2D       operator+(const Wektor2D& v1, const Wektor2D& v2);
+    friend Wektor2D       operator*(const Wektor2D& v1);
+    friend std ::ostream& operator<<(std ::ostream& s, const Wektor2D& v1);
 };
 
 Wektor2D operator+(const Wektor2D& v1, const Wektor2D& v2)
@@ -26,7 +27,6 @@ Wektor2D operator+(const Wektor2D& v1, const Wektor2D& v2)
     Wektor2D v = v1;
     v.x        = v2.x + v1.x;
     v.y        = v2.y + v1.y;
-
     return v;
 }
 
@@ -37,6 +37,10 @@ Wektor2D operator*(const Wektor2D& v2, const Wektor2D& v1)
     return B;
 }
 
+std::ostream& operator<<(std::ostream& s, const Wektor2D& v)
+{
+    return s << '<' << v.x << ',' << v.y << '>';
+}
 int main()
 {
     Wektor2D vec1(3.0, 4.0), vec2(1.0, 2.0);
@@ -44,5 +48,5 @@ int main()
     v.print();
     Wektor2D v1;
     v1 = vec1 * vec2;
-    cout << v1.ilo << endl;
+    cout << v << endl << vec1 << "\n";
 }
