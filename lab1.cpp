@@ -10,7 +10,7 @@ public:
         x = a;
         y = b;
         ++num_vec;
-        cout << num_vec << "\n";
+        //  cout << num_vec << "\n";
     }
     ~Wektor2D()
     {
@@ -21,7 +21,8 @@ public:
     double y;
     double ilo;
 
-    void print() { cout << num_vec << "\n"; }
+    static int populacja() { return num_vec; };
+    void       print() { cout << num_vec << "\n"; }
 
 private:
     static int      num_vec;
@@ -55,9 +56,9 @@ std::ostream& operator<<(std::ostream& s, const Wektor2D& v)
 int main()
 {
     Wektor2D vec1(3.0, 4.0), vec2(1.0, 2.0);
-    vec1.print();
+    cout << vec1.populacja() << "\n";
     Wektor2D v(0, 0);
-    vec1.print();
+    cout << vec1.populacja() << "\n";
     Wektor2D v1{(1.0, 4.0)};
-    vec1.print();
+    cout << vec1.populacja() << "\n";
 }
