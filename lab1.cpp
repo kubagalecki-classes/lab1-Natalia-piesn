@@ -4,23 +4,33 @@ using namespace std;
 
 class Wektor2D
 {
-
 public:
     Wektor2D(double a = 0, double b = 0)
     {
         x = a;
         y = b;
+        ++num_vec;
+        cout << num_vec << "\n";
+    }
+    ~Wektor2D()
+    {
+        --num_vec;
+        cout << num_vec << "\n";
     }
     double x;
     double y;
     double ilo;
-    void   print() { cout << x << " " << y << endl; }
+
+    void print() { cout << num_vec << "\n"; }
 
 private:
-    friend Wektor2D       operator+(const Wektor2D& v1, const Wektor2D& v2);
-    friend Wektor2D       operator*(const Wektor2D& v1);
-    friend std ::ostream& operator<<(std ::ostream& s, const Wektor2D& v1);
+    static int      num_vec;
+    friend Wektor2D operator+(const Wektor2D& v1, const Wektor2D& v2);
+    friend Wektor2D operator*(const Wektor2D& v1);
+    //   friend std ::ostream& operator<<(std ::ostream& s, const Wektor2D& v1);
 };
+
+int Wektor2D::num_vec = 0;
 
 Wektor2D operator+(const Wektor2D& v1, const Wektor2D& v2)
 {
@@ -36,17 +46,18 @@ Wektor2D operator*(const Wektor2D& v2, const Wektor2D& v1)
     B.ilo = v2.x * v1.x + v2.y * v1.y;
     return B;
 }
-
+/*
 std::ostream& operator<<(std::ostream& s, const Wektor2D& v)
 {
     return s << '<' << v.x << ',' << v.y << '>';
 }
+*/
 int main()
 {
     Wektor2D vec1(3.0, 4.0), vec2(1.0, 2.0);
-    Wektor2D v = vec1 + vec2;
-    v.print();
-    Wektor2D v1;
-    v1 = vec1 * vec2;
-    cout << v << endl << vec1 << "\n";
+    vec1.print();
+    Wektor2D v(0, 0);
+    vec1.print();
+    Wektor2D v1{(1.0, 4.0)};
+    vec1.print();
 }
