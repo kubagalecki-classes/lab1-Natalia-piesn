@@ -1,17 +1,20 @@
 
-#include <cmath>
 #include <iostream>
 using namespace std;
 
 class Wektor2D
 {
 public:
-    Wektor2D(double a = 0, double b = 0)
+    Wektor2D()
+    {
+        x = 0;
+        y = 0;
+    }
+    Wektor2D(double a, double b)
     {
         x = a;
         y = b;
     }
-
     void   setX(double a) { x = a; }
     void   setY(double b) { y = b; }
     double getX() { return x; }
